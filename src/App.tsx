@@ -1,9 +1,10 @@
 import './App.css'
+import Kanban from './components/kanban/kanban'
 
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
+      <Kanban />
     </>
   )
 }
