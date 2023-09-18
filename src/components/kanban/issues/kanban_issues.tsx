@@ -25,8 +25,8 @@ const KanbanIssue = (props: KanbanIssueComponentPropType) => {
   }, [props.issue])
 
   return (
-    <div className='kanban-issue'>
-      <h3 className='issue-title'>{issue?.title}</h3>
+    <div className='kanban-issue' draggable>
+      <p className='issue-title'>{issue?.title}</p>
       <div className='issue-meta'>
         <div className='meta-left'>
           <div className='issue-type'>
