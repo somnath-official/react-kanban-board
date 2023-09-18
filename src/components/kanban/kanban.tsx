@@ -24,7 +24,7 @@ const Kanban = () => {
             columns.map((column, index) => {
               return (
                 <div className='kanban-issues-column' key={index}>
-                  <span className='kanban-column-title'>{column.title}</span>
+                  <div className='kanban-column-title'>{column.title}</div>
                   {
                     allIssues.map(
                       (issue) => {

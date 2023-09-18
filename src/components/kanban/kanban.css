@@ -15,9 +15,27 @@
   width: 350px;
   min-width: 350px;
   height: 100%;
-  padding: 8px;
+  padding: 0px 8px;
+  position: relative;
+}
+
+.kanban-issues-column:first-child {
+  padding-left: 0px;
+}
+
+.kanban-issues-column:last-child {
+  padding-right: 0px;
 }
 
 .kanban-column-title {
-  color: white;
+  color: black;
+  display: block;
+  position: sticky;
+  top: 0px;
+  background: white;
+  padding: 16px 8px;
+  margin-bottom: 8px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
