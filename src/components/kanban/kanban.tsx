@@ -16,6 +16,27 @@ const Kanban = () => {
     setAllissues(kanbanAllIssues)
   }, [])
 
+  useEffect(() => {
+    adjustIssueWrapperHeight()
+  })
+
+  function adjustIssueWrapperHeight() {
+    const wrapper = document.querySelectorAll('.kanban-issues-wrapper')
+    if (wrapper) {
+      setTimeout(() => {
+        let height = 0
+        wrapper.forEach((ele: Element) => {
+          if (ele.clientHeight > height) {
+            height = ele.clientHeight
+          }
+        })
+        if (height) {
+          document.documentElement.style.setProperty('--kanbanIsueWrapperheight', `${height}px`)
+        }
+      }, 0)
+    }
+  }
+
   return (
     <>
       <div className='kanban-board-container'>
@@ -25,14 +46,23 @@ const Kanban = () => {
               return (
                 <div className='kanban-issues-column' key={index}>
                   <div className='kanban-column-title'>{column.title}</div>
-                  {
-                    allIssues.map(
-                      (issue) => {
-                        if (issue.kanban_column_id === column.id)
-                          return <KanbanIssue issue={issue} />
-                      }
-                    )
-                  }
+                  <div
+                    className='kanban-issues-wrapper'
+                  >
+                    {
+                      allIssues.map(
+                        (issue, i) => {
+                          if (issue.kanban_column_id === column.id)
+                            return (
+                              <KanbanIssue
+                                key={i}
+                                issue={issue}
+                              />
+                            )
+                        }
+                      )
+                    }
+                  </div>
                 </div>
               )
             })

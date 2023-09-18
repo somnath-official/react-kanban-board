@@ -28,14 +28,20 @@
 }
 
 .kanban-column-title {
-  color: black;
+  color: #ffffff;
   display: block;
   position: sticky;
   top: 0px;
-  background: white;
+  background: #292929;
   padding: 16px 8px;
-  margin-bottom: 8px;
   font-size: 17px;
   font-weight: 600;
   letter-spacing: 1px;
+}
+
+.kanban-issues-wrapper {
+  background-color: #737373;
+  max-height: var(--kanbanIsueWrapperheight);
+  height: var(--kanbanIsueWrapperheight);
+  padding: 8px;
 }
