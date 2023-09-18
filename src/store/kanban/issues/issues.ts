@@ -28,7 +28,7 @@ export const kanbanAllIssues: Array<KanbanIssuesInterface> = [
       email: 'deep@example.com',
       avatar: 'https://i.pravatar.cc/150?u=deep@example.com',
     },
-    kanban_column_id: 1,
+    kanban_column_id: 2,
     project_id: 1,
   },
   {
@@ -58,7 +58,7 @@ export const kanbanAllIssues: Array<KanbanIssuesInterface> = [
       email: 'sourav@example.com',
       avatar: 'https://i.pravatar.cc/150?u=sourav@example.com',
     },
-    kanban_column_id: 1,
+    kanban_column_id: 2,
     project_id: 1,
   },
   {
@@ -88,7 +88,7 @@ export const kanbanAllIssues: Array<KanbanIssuesInterface> = [
       email: 'sourav@example.com',
       avatar: 'https://i.pravatar.cc/150?u=sourav@example.com',
     },
-    kanban_column_id: 1,
+    kanban_column_id: 3,
     project_id: 1,
   },
   {
@@ -118,7 +118,7 @@ export const kanbanAllIssues: Array<KanbanIssuesInterface> = [
       email: 'sourav@example.com',
       avatar: 'https://i.pravatar.cc/150?u=sourav@example.com',
     },
-    kanban_column_id: 1,
+    kanban_column_id: 4,
     project_id: 1,
   },
   {

@@ -7,14 +7,23 @@ import { KanbanColumnInterface } from '../../types/kanban/columns'
 import { kanbanAllIssues } from '../../store/kanban/issues/issues'
 import { KanbanIssuesInterface } from '../../types/kanban/issues'
 
-const Kanban = () => {
+interface KanbanComponentPropType {
+  height?: string
+  width?: string
+}
+
+const Kanban = (props: KanbanComponentPropType) => {
   const [columns, setColumns] = useState<Array<KanbanColumnInterface>>([])
   const [allIssues, setAllissues] = useState<Array<KanbanIssuesInterface>>([])
+  const [kanbanHeight, setKanbanHeight] = useState<string>()
+  const [kanbanWidth, setKanbanWidth] = useState<string>()
 
   useEffect(() => {
     setColumns(kanbanColumns)
     setAllissues(kanbanAllIssues)
-  }, [])
+    setKanbanHeight(props.height ? props.height : '100vh')
+    setKanbanWidth(props.width ? props.width : '100%')
+  }, [props.height, props.width])
 
   useEffect(() => {
     adjustIssueWrapperHeight()
@@ -39,7 +48,10 @@ const Kanban = () => {
 
   return (
     <>
-      <div className='kanban-board-container'>
+      <div
+        className='kanban-board-container'
+        style={{ height: kanbanHeight, width: kanbanWidth }}
+      >
         <div className='kanban-issues-container'>
           {
             columns.map((column, index) => {
