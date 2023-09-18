@@ -46,6 +46,16 @@ const Kanban = (props: KanbanComponentPropType) => {
     }
   }
 
+  function enableDropping(event: React.DragEvent<HTMLDivElement>) {
+    event.preventDefault()
+  }
+
+  function handleDrop(event: React.DragEvent<HTMLDivElement>) {
+    const column_id = event.currentTarget.dataset.column_id
+    const issue_id = event.dataTransfer.getData('text')
+    console.log({ column_id, issue_id })
+  }
+
   return (
     <>
       <div
@@ -56,7 +66,13 @@ const Kanban = (props: KanbanComponentPropType) => {
           {
             columns.map((column, index) => {
               return (
-                <div className='kanban-issues-column' key={index}>
+                <div
+                  className='kanban-issues-column'
+                  key={index}
+                  onDragOver={enableDropping}
+                  onDrop={handleDrop}
+                  data-column_id={column.id}
+                >
                   <div className='kanban-column-title'>{column.title}</div>
                   <div
                     className='kanban-issues-wrapper'
