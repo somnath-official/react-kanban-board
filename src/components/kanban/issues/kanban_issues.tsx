@@ -5,6 +5,8 @@ import { kanbanAvailableIssuesType } from '../../../store/kanban/issueTypes/issu
 import { KanbanIssueTypesInterface } from '../../../types/kanban/issueTypes'
 import { kanbanIssuePriorities } from '../../../store/kanban/issuePriorities/issuePriorities'
 import { KanbanIssuePrioritiesInterface } from '../../../types/kanban/issuePriorities'
+import { KanbanUsersInterface } from '../../../types/kanban/users'
+import { defaultUser, kanbanAllUsers } from '../../../store/kanban/users/allUsers'
 
 interface KanbanIssueComponentPropType {
   issue: KanbanIssuesInterface
@@ -14,14 +16,17 @@ const KanbanIssue = (props: KanbanIssueComponentPropType) => {
   const [issue, setIssue] = useState<KanbanIssuesInterface | null>(null)
   const [issueType, setIssueType] = useState<KanbanIssueTypesInterface>()
   const [priority, setPriority] = useState<KanbanIssuePrioritiesInterface>()
+  const [issueAssigne, setIssueAssigne] = useState<KanbanUsersInterface>()
 
   useEffect(() => {
     const type = kanbanAvailableIssuesType.find(type => type.id === props.issue?.type_id)
     const priority = kanbanIssuePriorities.find(p => p.id === props.issue?.priority_id)
+    const assignee = kanbanAllUsers.find(u => u.id === props.issue?.assignee_id)
 
     setIssue(props.issue)
     setIssueType(type)
     setPriority(priority)
+    setIssueAssigne(assignee ?? defaultUser)
   }, [props.issue])
 
   function dragStart(event: React.DragEvent<HTMLDivElement>) {
@@ -46,7 +51,7 @@ const KanbanIssue = (props: KanbanIssueComponentPropType) => {
             <img className='icon' src={priority?.icon} alt={priority?.title} draggable="false" />
           </div>
           <div className='issue-assignee'>
-            <img className='user-avatar' src={issue?.assignee.avatar} alt={issue?.assignee.name} draggable="false" />
+            <img className='user-avatar' src={issueAssigne?.avatar} alt={issueAssigne?.name} draggable="false" />
           </div>
         </div>
       </div>

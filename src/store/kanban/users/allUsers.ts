@@ -32,3 +32,11 @@ export const kanbanAllUsers: Array<KanbanUsersInterface> = [
     avatar: 'https://i.pravatar.cc/150?u=momota@example.com',
   }
 ]
+
+export const defaultUser: KanbanUsersInterface = {
+  id: 0,
+  name: 'User',
+  email: 'user@example.com',
+  // avatar: 'https://i.pravatar.cc/150?u=user@example.com',
+  avatar: '/no_user.jpg',
+}

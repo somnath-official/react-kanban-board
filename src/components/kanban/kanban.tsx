@@ -74,9 +74,7 @@ const Kanban = (props: KanbanComponentPropType) => {
                   data-column_id={column.id}
                 >
                   <div className='kanban-column-title'>{column.title}</div>
-                  <div
-                    className='kanban-issues-wrapper'
-                  >
+                  <div className='kanban-issues-wrapper'>
                     {
                       allIssues.map(
                         (issue, i) => {
