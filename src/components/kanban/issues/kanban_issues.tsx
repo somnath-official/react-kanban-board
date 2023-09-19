@@ -37,16 +37,16 @@ const KanbanIssue = (props: KanbanIssueComponentPropType) => {
       <div className='issue-meta'>
         <div className='meta-left'>
           <div className='issue-type'>
-            <img className='icon' src={issueType?.icon} alt={issueType?.title} />
+            <img className='icon' src={issueType?.icon} alt={issueType?.title} draggable="false" />
           </div>
-          <div className='issue-id'>{issue?.issue_slug}</div>
+          <div className='issue-id' draggable="false">{issue?.issue_slug}</div>
         </div>
         <div className='meta-right'>
           <div className='issue-priority'>
-            <img className='icon' src={priority?.icon} alt={priority?.title} />
+            <img className='icon' src={priority?.icon} alt={priority?.title} draggable="false" />
           </div>
           <div className='issue-assignee'>
-            <img className='user-avatar' src={issue?.assignee.avatar} alt={issue?.assignee.name} />
+            <img className='user-avatar' src={issue?.assignee.avatar} alt={issue?.assignee.name} draggable="false" />
           </div>
         </div>
       </div>
