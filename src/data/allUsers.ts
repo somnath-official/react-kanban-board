@@ -1,4 +1,4 @@
-import { KanbanUsersInterface } from "../../../types/kanban/users";
+import { KanbanUsersInterface } from "../types/kanban/users";
 
 export const kanbanAllUsers: Array<KanbanUsersInterface> = [
   {

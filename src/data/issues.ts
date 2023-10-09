@@ -1,4 +1,4 @@
-import { KanbanIssuesInterface } from "../../../types/kanban/issues";
+import { KanbanIssuesInterface } from "../types/kanban/issues";
 
 export const kanbanAllIssues: Array<KanbanIssuesInterface> = [
   {

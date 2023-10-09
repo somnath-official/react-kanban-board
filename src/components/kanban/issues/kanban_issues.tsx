@@ -1,18 +1,23 @@
 import { useEffect, useState } from 'react'
 import './kanban_issues.css'
-import { KanbanIssuesInterface } from '../../../types/kanban/issues'
-import { kanbanAvailableIssuesType } from '../../../store/kanban/issueTypes/issueTypes'
-import { KanbanIssueTypesInterface } from '../../../types/kanban/issueTypes'
-import { kanbanIssuePriorities } from '../../../store/kanban/issuePriorities/issuePriorities'
-import { KanbanIssuePrioritiesInterface } from '../../../types/kanban/issuePriorities'
-import { KanbanUsersInterface } from '../../../types/kanban/users'
-import { defaultUser, kanbanAllUsers } from '../../../store/kanban/users/allUsers'
+import { KanbanIssuesInterface } from '@/types/kanban/issues'
+import { KanbanIssueTypesInterface } from '@/types/kanban/issueTypes'
+import { KanbanIssuePrioritiesInterface } from '@/types/kanban/issuePriorities'
+import { KanbanUsersInterface } from '@/types/kanban/users'
+
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 
 interface KanbanIssueComponentPropType {
   issue: KanbanIssuesInterface
 }
 
 const KanbanIssue = (props: KanbanIssueComponentPropType) => {
+  const kanbanIssuePriorities = useSelector((state: RootState) => state.kanbanIssuePriorities.priorities)
+  const kanbanAvailableIssuesType = useSelector((state: RootState) => state.kanbanIssueTypes.types)
+  const kanbanAllUsers = useSelector((state: RootState) => state.kanbanUsers.users)
+  const defaultUser = useSelector((state: RootState) => state.kanbanUsers.defaultUser)
+
   const [issue, setIssue] = useState<KanbanIssuesInterface | null>(null)
   const [issueType, setIssueType] = useState<KanbanIssueTypesInterface>()
   const [priority, setPriority] = useState<KanbanIssuePrioritiesInterface>()
@@ -27,7 +32,13 @@ const KanbanIssue = (props: KanbanIssueComponentPropType) => {
     setIssueType(type)
     setPriority(priority)
     setIssueAssigne(assignee ?? defaultUser)
-  }, [props.issue])
+  }, [
+    props.issue,
+    kanbanIssuePriorities,
+    kanbanAvailableIssuesType,
+    kanbanAllUsers,
+    defaultUser,
+  ])
 
   function dragStart(event: React.DragEvent<HTMLDivElement>) {
     const data = event.currentTarget.dataset.info ?? ''

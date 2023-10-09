@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import './kanban.css'
 import KanbanIssue from './issues/kanban_issues'
 
-import { kanbanColumns } from '../../store/kanban/columns/kanbanColumns'
-import { KanbanColumnInterface } from '../../types/kanban/columns'
-import { kanbanAllIssues } from '../../store/kanban/issues/issues'
-import { KanbanIssuesInterface } from '../../types/kanban/issues'
+import { KanbanColumnInterface } from '@/types/kanban/columns'
+import { KanbanIssuesInterface } from '@/types/kanban/issues'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 
 interface KanbanComponentPropType {
   height?: string
@@ -13,6 +13,9 @@ interface KanbanComponentPropType {
 }
 
 const Kanban = (props: KanbanComponentPropType) => {
+  const kanbanColumns = useSelector((state: RootState) => state.kanbanColumns.columns)
+  const kanbanAllIssues = useSelector((state: RootState) => state.kanbanIssues.issues)
+
   const [columns, setColumns] = useState<Array<KanbanColumnInterface>>([])
   const [allIssues, setAllissues] = useState<Array<KanbanIssuesInterface>>([])
   const [kanbanHeight, setKanbanHeight] = useState<string>()
@@ -23,7 +26,12 @@ const Kanban = (props: KanbanComponentPropType) => {
     setAllissues(kanbanAllIssues)
     setKanbanHeight(props.height ? props.height : '100vh')
     setKanbanWidth(props.width ? props.width : '100%')
-  }, [props.height, props.width])
+  }, [
+    props.height,
+    props.width,
+    kanbanColumns,
+    kanbanAllIssues,
+  ])
 
   useEffect(() => {
     adjustIssueWrapperHeight()

@@ -1,4 +1,4 @@
-import { KanbanColumnInterface } from "../../../types/kanban/columns";
+import { KanbanColumnInterface } from "../types/kanban/columns";
 
 export const kanbanColumns: Array<KanbanColumnInterface> = [
   {
