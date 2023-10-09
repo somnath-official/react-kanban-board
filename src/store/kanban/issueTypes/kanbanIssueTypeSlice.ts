@@ -17,6 +17,6 @@ export const kanbanIssueTypeSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-// export const {  } = counterSlice.actions
+// export const {  } = kanbanIssueTypeSlice.actions
 
 export default kanbanIssueTypeSlice.reducer

@@ -17,6 +17,6 @@ export const kanbanIssuePrioritySlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-// export const {  } = counterSlice.actions
+// export const {  } = kanbanIssuePrioritySlice.actions
 
 export default kanbanIssuePrioritySlice.reducer

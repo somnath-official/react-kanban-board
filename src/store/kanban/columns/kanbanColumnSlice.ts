@@ -17,6 +17,6 @@ export const kanbanColumnsSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-// export const {  } = counterSlice.actions
+// export const {  } = kanbanColumnsSlice.actions
 
 export default kanbanColumnsSlice.reducer

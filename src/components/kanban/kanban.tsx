@@ -4,8 +4,9 @@ import KanbanIssue from './issues/kanban_issues'
 
 import { KanbanColumnInterface } from '@/types/kanban/columns'
 import { KanbanIssuesInterface } from '@/types/kanban/issues'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store'
+import { updateUssieColumn } from '../../store/kanban/issues/kanbanIssuesSlice'
 
 interface KanbanComponentPropType {
   height?: string
@@ -13,6 +14,8 @@ interface KanbanComponentPropType {
 }
 
 const Kanban = (props: KanbanComponentPropType) => {
+  const dispatch = useDispatch()
+
   const kanbanColumns = useSelector((state: RootState) => state.kanbanColumns.columns)
   const kanbanAllIssues = useSelector((state: RootState) => state.kanbanIssues.issues)
 
@@ -59,9 +62,10 @@ const Kanban = (props: KanbanComponentPropType) => {
   }
 
   function handleDrop(event: React.DragEvent<HTMLDivElement>) {
-    const column_id = event.currentTarget.dataset.column_id
-    const issue_id = event.dataTransfer.getData('text')
-    console.log({ column_id, issue_id })
+    const column_id = Number(event.currentTarget.dataset.column_id)
+    const issue_id = Number(event.dataTransfer.getData('text'))
+    // console.log({ column_id, issue_id })
+    dispatch(updateUssieColumn({ column_id, issue_id }))
   }
 
   return (
