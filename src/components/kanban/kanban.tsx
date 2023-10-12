@@ -36,26 +36,26 @@ const Kanban = (props: KanbanComponentPropType) => {
     kanbanAllIssues,
   ])
 
-  useEffect(() => {
-    adjustIssueWrapperHeight()
-  })
+  // useEffect(() => {
+  //   adjustIssueWrapperHeight()
+  // })
 
-  function adjustIssueWrapperHeight() {
-    const wrapper = document.querySelectorAll('.kanban-issues-wrapper')
-    if (wrapper) {
-      setTimeout(() => {
-        let height = 0
-        wrapper.forEach((ele: Element) => {
-          if (ele.clientHeight > height) {
-            height = ele.clientHeight
-          }
-        })
-        if (height) {
-          document.documentElement.style.setProperty('--kanbanIsueWrapperheight', `${height}px`)
-        }
-      }, 0)
-    }
-  }
+  // function adjustIssueWrapperHeight() {
+  //   const wrapper = document.querySelectorAll('.kanban-issues-wrapper') as NodeListOf<HTMLDivElement>
+  //   if (wrapper) {
+  //     setTimeout(() => {
+  //       let height = 0
+  //       wrapper.forEach((ele: HTMLDivElement) => {
+  //         if (ele.clientHeight > height) {
+  //           height = ele.clientHeight
+  //         }
+  //       })
+  //       if (height) {
+  //         document.documentElement.style.setProperty('--kanbanIsueWrapperheight', `${height}px`)
+  //       }
+  //     }, 0)
+  //   }
+  // }
 
   function enableDropping(event: React.DragEvent<HTMLDivElement>) {
     event.preventDefault()
