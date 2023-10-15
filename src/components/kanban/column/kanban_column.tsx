@@ -12,39 +12,25 @@ interface KanbanColumnComponentPropType {
   column: KanbanColumnInterface
 }
 
+interface DataTrsnaferObjectInterface {
+  issue_id: string,
+  start_column_id: string
+}
+
 const KanbanColumn = (props: KanbanColumnComponentPropType) => {
   const dispatch = useDispatch()
   const kanbanAllIssues = useSelector((state: RootState) => state.kanbanIssues.issues)
 
-  const [column, setColumn] = useState<KanbanColumnInterface | null>(null)
   const [issues, setIssues] = useState<Array<KanbanIssuesInterface>>([])
 
   useEffect(() => {
-    const t = kanbanAllIssues.filter((item) => item.kanban_column_id === column?.id)
-    setColumn(props.column)
+    const t = kanbanAllIssues.filter((item) => item.kanban_column_id === props.column.id)
     setIssues(t)
-  }, [column?.id, kanbanAllIssues, props.column])
+  }, [kanbanAllIssues, props.column])
 
   // useEffect(() => {
   //   adjustIssueWrapperHeight()
   // })
-
-  function enableDropping(event: React.DragEvent<HTMLDivElement>) {
-    event.preventDefault()
-  }
-
-  function handleDrop(event: React.DragEvent<HTMLDivElement>) {
-    const data: { issue_id: string, start_column_id: string } = JSON.parse(event.dataTransfer.getData('text'))
-    dispatch(
-      updateIssueColumn(
-        {
-          start_column_id: Number(data.start_column_id),
-          issue_id: Number(data.issue_id),
-          end_column_id: Number(event.currentTarget.dataset.column_id),
-        }
-      )
-    )
-  }
 
   // function adjustIssueWrapperHeight() {
   //   const wrapper = document.querySelectorAll('.kanban-issues-wrapper') as NodeListOf<HTMLDivElement>
@@ -63,14 +49,31 @@ const KanbanColumn = (props: KanbanColumnComponentPropType) => {
   //   }
   // }
 
+  function enableDropping(event: React.DragEvent<HTMLDivElement>) {
+    event.preventDefault()
+  }
+
+  function handleDrop(event: React.DragEvent<HTMLDivElement>) {
+    const { issue_id, start_column_id }: DataTrsnaferObjectInterface = JSON.parse(event.dataTransfer.getData('text'))
+    dispatch(
+      updateIssueColumn(
+        {
+          start_column_id: Number(start_column_id),
+          issue_id: Number(issue_id),
+          end_column_id: Number(event.currentTarget.dataset.column_id),
+        }
+      )
+    )
+  }
+
   return (
     <div
       className='kanban-issues-column'
       onDragOver={enableDropping}
       onDrop={handleDrop}
-      data-column_id={column?.id}
+      data-column_id={props.column.id}
     >
-      <div className='kanban-column-title'>{column?.title}</div>
+      <div className='kanban-column-title'>{props.column.title}</div>
       <div className='kanban-issues-wrapper'>
         {
           issues.map(
