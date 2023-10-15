@@ -14,12 +14,16 @@ export const kanbanIssuesSlice = createSlice({
   name: 'kanbanIssues',
   initialState,
   reducers: {
-    updateIssueColumn(state, action: PayloadAction<{ column_id: number, issue_id: number }>) {
-      state.issues.map((issue) => {
-        if (issue.id === action.payload.issue_id) {
-          issue.kanban_column_id = action.payload.column_id
-        }
-      })
+    updateIssueColumn(
+      state,
+      action: PayloadAction<{ start_column_id: number, issue_id: number, end_column_id: number }>
+    ) {
+      if (action.payload.start_column_id !== action.payload.end_column_id) {
+        const tempObj: KanbanIssuesInterface = Object.assign({}, state.issues.find(issue => issue.id === action.payload.issue_id))
+        state.issues.splice(state.issues.findIndex((issue) => issue.id === action.payload.issue_id), 1)
+        tempObj.kanban_column_id = action.payload.end_column_id
+        state.issues.push(tempObj)
+      }
     }
   },
 })

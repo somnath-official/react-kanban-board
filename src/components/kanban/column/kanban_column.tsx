@@ -34,9 +34,16 @@ const KanbanColumn = (props: KanbanColumnComponentPropType) => {
   }
 
   function handleDrop(event: React.DragEvent<HTMLDivElement>) {
-    const column_id = Number(event.currentTarget.dataset.column_id)
-    const issue_id = Number(event.dataTransfer.getData('text'))
-    dispatch(updateIssueColumn({ column_id, issue_id }))
+    const data: { issue_id: string, start_column_id: string } = JSON.parse(event.dataTransfer.getData('text'))
+    dispatch(
+      updateIssueColumn(
+        {
+          start_column_id: Number(data.start_column_id),
+          issue_id: Number(data.issue_id),
+          end_column_id: Number(event.currentTarget.dataset.column_id),
+        }
+      )
+    )
   }
 
   // function adjustIssueWrapperHeight() {
@@ -68,13 +75,12 @@ const KanbanColumn = (props: KanbanColumnComponentPropType) => {
         {
           issues.map(
             (issue, i) => {
-              if (issue.kanban_column_id === column?.id)
-                return (
-                  <KanbanIssue
-                    key={i}
-                    issue={issue}
-                  />
-                )
+              return (
+                <KanbanIssue
+                  key={i}
+                  issue={issue}
+                />
+              )
             }
           )
         }

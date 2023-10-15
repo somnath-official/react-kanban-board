@@ -41,14 +41,23 @@ const KanbanIssue = (props: KanbanIssueComponentPropType) => {
   ])
 
   function dragStart(event: React.DragEvent<HTMLDivElement>) {
-    const data = event.currentTarget.dataset.info ?? ''
-    event.dataTransfer.setData("text/plain", data)
+    const data = {
+      issue_id: event.currentTarget.dataset.issue_id,
+      start_column_id: event.currentTarget.dataset.start_column_id,
+    }
+    event.dataTransfer.setData("text/plain", JSON.stringify(data))
     event.dataTransfer.effectAllowed = 'copyMove'
     event.dataTransfer.dropEffect = 'move'
   }
 
   return (
-    <div className='kanban-issue' draggable onDragStart={dragStart} data-info={issue?.id}>
+    <div
+      className='kanban-issue'
+      draggable
+      onDragStart={dragStart}
+      data-issue_id={issue?.id}
+      data-start_column_id={issue?.kanban_column_id}
+    >
       <p className='issue-title'>{issue?.title}</p>
       <div className='issue-meta'>
         <div className='meta-left'>

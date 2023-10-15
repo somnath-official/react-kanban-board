@@ -33,7 +33,7 @@ export const kanbanAllIssues: Array<KanbanIssuesInterface> = [
   },
   {
     id: 4,
-    title: "Leave Group' option MISSING from front-end on Open Free Groups",
+    title: "Need to increase font size on blog details page (reference hashnode)",
     type_id: 2,
     issue_slug: 'pr-004',
     priority_id: 3,
@@ -43,7 +43,7 @@ export const kanbanAllIssues: Array<KanbanIssuesInterface> = [
   },
   {
     id: 5,
-    title: "Leave Group' option MISSING from front-end on Open Free Groups",
+    title: "Mobile View > Safari> Create Article > Text options are not showing",
     type_id: 2,
     issue_slug: 'pr-004',
     priority_id: 3,
@@ -53,7 +53,7 @@ export const kanbanAllIssues: Array<KanbanIssuesInterface> = [
   },
   {
     id: 6,
-    title: "Leave Group' option MISSING from front-end on Open Free Groups",
+    title: "Dev(web): Article meta Title and description: Link preview is not visible on Linkedin.",
     type_id: 2,
     issue_slug: 'pr-004',
     priority_id: 3,
@@ -63,7 +63,7 @@ export const kanbanAllIssues: Array<KanbanIssuesInterface> = [
   },
   {
     id: 7,
-    title: "Leave Group' option MISSING from front-end on Open Free Groups",
+    title: "BLOG-  add button Save as DRAFT",
     type_id: 2,
     issue_slug: 'pr-004',
     priority_id: 3,
@@ -73,7 +73,7 @@ export const kanbanAllIssues: Array<KanbanIssuesInterface> = [
   },
   {
     id: 8,
-    title: "Leave Group' option MISSING from front-end on Open Free Groups",
+    title: "[Web] Live/Dev Server - Create / edit article - There is no validation messages showing for limit for number of characters for article title",
     type_id: 2,
     issue_slug: 'pr-004',
     priority_id: 3,
@@ -83,7 +83,7 @@ export const kanbanAllIssues: Array<KanbanIssuesInterface> = [
   },
   {
     id: 9,
-    title: "Leave Group' option MISSING from front-end on Open Free Groups",
+    title: "Web Live /Dev> Home page> Featured business> URL is showing ",
     type_id: 2,
     issue_slug: 'pr-004',
     priority_id: 3,
@@ -93,7 +93,7 @@ export const kanbanAllIssues: Array<KanbanIssuesInterface> = [
   },
   {
     id: 10,
-    title: "Leave Group' option MISSING from front-end on Open Free Groups",
+    title: "TRY UNLAYER to create landing pages ",
     type_id: 2,
     issue_slug: 'pr-004',
     priority_id: 3,
