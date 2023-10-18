@@ -50,11 +50,22 @@ const KanbanIssue = (props: KanbanIssueComponentPropType) => {
     event.dataTransfer.dropEffect = 'move'
   }
 
+  function onDrag(event: React.DragEvent<HTMLDivElement>) {
+    event.preventDefault()
+    event.currentTarget.classList.add('dragging')
+  }
+
+  function dragEnd(event: React.DragEvent<HTMLDivElement>) {
+    event.currentTarget.classList.remove('dragging')
+  }
+
   return (
     <div
       className='kanban-issue'
       draggable
       onDragStart={dragStart}
+      onDrag={onDrag}
+      onDragEnd={dragEnd}
       data-issue_id={issue?.id}
       data-start_column_id={issue?.kanban_column_id}
     >
